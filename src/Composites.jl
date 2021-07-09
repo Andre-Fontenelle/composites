@@ -1,3 +1,5 @@
+module Composites
+
 # ================================= Imports ================================== #
 
 
@@ -8,3 +10,6 @@ struct Composite end
 function CarbonFiber()
     return Composite()
 end
+
+
+end # module

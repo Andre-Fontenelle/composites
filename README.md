@@ -1,2 +1,2 @@
-# composite
+# composites
 Database of composite materials
