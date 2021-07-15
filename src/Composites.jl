@@ -38,6 +38,9 @@ struct Composite
     τ12 :: Float64 # (Pa) Shear strength in plane 12
     τ23 :: Float64 # (Pa) Shear strength in plane 23
     τ13 :: Float64 # (Pa) Shear strength in plane 13
+
+    # Misc.
+    Sym :: Symbol # Symbol that represents the material
 end
 
 # ================================= Defaults ================================= #
@@ -77,7 +80,11 @@ function CarbonUnidirectional()
     τ13 = 75e6 # (Pa) Shear strength in plane 13
     shear = (τ12, τ23, τ13)
 
-    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear...)
+    # Misc.
+    Sym = :CU
+    misc = tuple(Sym)
+
+    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
 end
 
 function CarbonMesh()
@@ -116,7 +123,11 @@ function CarbonMesh()
     τ13 = 75e6 # (Pa) Shear strength in plane 13
     shear = (τ12, τ23, τ13)
 
-    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear...)
+    # Misc.
+    Sym = :CM
+    misc = tuple(Sym)
+
+    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
 end
 
 function AramidUnidirectional()
@@ -155,7 +166,11 @@ function AramidUnidirectional()
     τ13 = 37e6 # (Pa) Shear strength in plane 13
     shear = (τ12, τ23, τ13)
 
-    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear...)
+    # Misc.
+    Sym = :AU
+    misc = tuple(Sym)
+
+    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
 end
 
 function AramidMesh()
@@ -194,7 +209,11 @@ function AramidMesh()
     τ13 = 33e6 # (Pa) Shear strength in plane 13
     shear = (τ12, τ23, τ13)
 
-    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear...)
+    # Misc.
+    Sym = :AM
+    misc = tuple(Sym)
+
+    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
 end
 
 end # module
