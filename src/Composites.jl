@@ -6,7 +6,6 @@ module Composites
 # ================================= Exports ================================== #
 export Composite # Data type
 export CarbonUnidirectional, CarbonMesh, AramidUnidirectional, AramidMesh # Materials
-export CU, CM, AU, AM
 
 # ============================= Struct Definition ============================ #
 struct Composite
@@ -197,11 +196,5 @@ function AramidMesh()
 
     return Composite(phisycal..., stiffness..., poisson..., tensile..., shear...)
 end
-
-# ================================= Aliases ================================= #
-CU = CarbonUnidirectional
-CM = CarbonMesh
-AU = AramidUnidirectional
-AM = AramidMesh
 
 end # module
