@@ -6,6 +6,7 @@ module Composites
 # ================================= Exports ================================== #
 export Composite # Data type
 export CarbonUnidirectional, CarbonMesh, AramidUnidirectional, AramidMesh # Materials
+export Dummy
 
 # ============================= Struct Definition ============================ #
 struct Composite
