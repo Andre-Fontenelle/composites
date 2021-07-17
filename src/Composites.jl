@@ -216,4 +216,49 @@ function AramidMesh()
     return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
 end
 
+# ================================= Dummy Material ================================= #
+# This material is supposed to represent empty layers
+function Dummy()
+    # Phisycal properties
+    t = 1e-9 # (m) Composite layer thickness
+    ρ = 0    # (kg/m^3) Density
+    phisycal = (t, ρ)
+
+    # Stiffness properties
+    E1  = 1e-9   # (Pa) Young module in direction 1
+    E2  = 1e-9   # (Pa) Young module in direction 2
+    E3  = 1e-9   # (Pa) Young module in direction 3
+    G12 = 0.4e-9 # (Pa) Shear module in plane 12
+    G23 = 0.4e-9 # (Pa) Shear module in plane 23
+    G13 = 0.4e-9 # (Pa) Shear module in plane 13
+    stiffness = (E1, E2, E3, G12, G23, G13)
+
+    # Poisson ratios
+    ν12 = 0.5 # Poisson between directions 12
+    ν23 = 0.5 # Poisson between directions 23
+    ν13 = 0.5 # Poisson between directions 13
+    poisson = (ν12, ν23, ν13)
+
+    # Tensile strength
+    σT1 = 1e10 # (Pa) Tension strength in direction 1
+    σT2 = 1e10 # (Pa) Tension strength in direction 2
+    σT3 = 1e10 # (Pa) Tension strength in direction 3
+    σC1 = 1e10 # (Pa) Compression in direction 1
+    σC2 = 1e10 # (Pa) Compression in direction 2
+    σC3 = 1e10 # (Pa) Compression in direction 3
+    tensile = (σT1, σT2, σT3, σC1, σC2, σC3)
+
+    # Shear strength
+    τ12 = 1e10 # (Pa) Shear strength in plane 12
+    τ23 = 1e10 # (Pa) Shear strength in plane 23
+    τ13 = 1e10 # (Pa) Shear strength in plane 13
+    shear = (τ12, τ23, τ13)
+
+    # Misc.
+    Sym = :∅ #represented by the \emptyset symbol
+    misc = tuple(Sym)
+
+    return Composite(phisycal..., stiffness..., poisson..., tensile..., shear..., misc...)
+end
+
 end # module
